@@ -1,15 +1,32 @@
 public class Validator {
-    public static boolean isValidNumber(String input) {
+
+    private static final int MIN_VALUE = -32768;
+    private static final int MAX_VALUE = 32767;
+
+    public static String validateNumber(String input) {
+        if (!isParsableAsLong(input)) {
+            return "Error: Input harus angka";
+        }
+
+        long value = Long.parseLong(input);
+        if (!isWithinShortRange(value)) {
+            return "Error: Input di luar jangkauan";
+        }
+
+        return null; // valid
+    }
+
+    public static boolean isParsableAsLong(String input) {
         try {
-            Integer.valueOf(input);
+            Long.parseLong(input);
             return true;
         } catch (NumberFormatException e) {
             return false;
         }
     }
 
-    public static boolean isWithinRange(int number) {
-        return (number >= -32768 && number <= 32767);
+    public static boolean isWithinShortRange(long number) {
+        return number >= MIN_VALUE && number <= MAX_VALUE;
     }
 
     public static boolean isValidOperator(String operator) {
