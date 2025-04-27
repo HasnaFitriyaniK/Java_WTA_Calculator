@@ -3,8 +3,8 @@
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/WelsyaAlmaira/java-calculator-gradle.git
-   cd java-calculator-gradle
+   https://github.com/HasnaFitriyaniK/Java_WTA_Calculator.git
+   cd Java_WTA_Calculator
    
 2. **Build the project**
 
