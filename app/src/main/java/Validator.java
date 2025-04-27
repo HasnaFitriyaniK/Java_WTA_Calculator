@@ -4,28 +4,28 @@ public class Validator {
     private static final int MAX_VALUE = 32767;
 
     public static String validateNumber(String input) {
-        if (!isParsableAsLong(input)) {
+        if (!isParsableAsDouble(input)) {
             return "Error: Input harus angka";
         }
 
-        long value = Long.parseLong(input);
-        if (!isWithinShortRange(value)) {
+        double value = Double.parseDouble(input);
+        if (!isWithinRange(value)) {
             return "Error: Input di luar jangkauan";
         }
 
         return null; // valid
     }
 
-    public static boolean isParsableAsLong(String input) {
+    public static boolean isParsableAsDouble(String input) {
         try {
-            Long.parseLong(input);
+            Double.parseDouble(input);
             return true;
         } catch (NumberFormatException e) {
             return false;
         }
     }
 
-    public static boolean isWithinShortRange(long number) {
+    public static boolean isWithinRange(double number) {
         return number >= MIN_VALUE && number <= MAX_VALUE;
     }
 
@@ -33,7 +33,7 @@ public class Validator {
         return operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/");
     }
 
-    public static boolean isNonZeroDivisor(int divisor) {
-        return divisor != 0;
+    public static boolean isNonZeroDivisor(double divisor) {
+        return divisor != 0.0;
     }
 }

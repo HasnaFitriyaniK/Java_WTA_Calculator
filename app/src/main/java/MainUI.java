@@ -13,7 +13,7 @@ import java.awt.event.WindowEvent;
 
 public class MainUI implements ActionListener {
     Frame f;
-    Button b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, badd, bsub, bmul, bdiv, beq, bclr;
+    Button b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, badd, bsub, bclr, bmul, bdiv, bdot, beq;
     Panel p;
     TextField t1;
     String s1, s2, operator;
@@ -40,6 +40,7 @@ public class MainUI implements ActionListener {
         bsub = new Button("-");
         bmul = new Button("*");
         bdiv = new Button("/");
+        bdot = new Button(",");
         beq = new Button("=");
         bclr = new Button("CLR");
 
@@ -58,6 +59,7 @@ public class MainUI implements ActionListener {
         bsub.addActionListener(this);
         bmul.addActionListener(this);
         bdiv.addActionListener(this);
+        bdot.addActionListener(this);
         beq.addActionListener(this);
         bclr.addActionListener(this);
 
@@ -76,8 +78,9 @@ public class MainUI implements ActionListener {
         bsub.setPreferredSize(buttonSize);
         bmul.setPreferredSize(buttonSize);
         bdiv.setPreferredSize(buttonSize);
+        bdot.setPreferredSize(buttonSize);
         beq.setPreferredSize(buttonSize);
-        bclr.setPreferredSize(buttonSize);
+        bclr.setPreferredSize(new Dimension(180, 30));
 
         // Panel untuk tombol
         p.setLayout(new GridLayout(4, 4));
@@ -95,18 +98,23 @@ public class MainUI implements ActionListener {
         p.add(bsub);
         p.add(bmul);
         p.add(bdiv);
+        p.add(bdot);
         p.add(beq);
         p.add(bclr);
 
+        Panel p2 = new Panel();
+        p2.setLayout(new GridLayout(1, 1));
+        p2.add(bclr);
+
         f.add(p);
-        f.setSize(270, 285);
+        f.add(p2);
+        f.setSize(270, 315);
         f.setVisible(true);
         f.setBackground(Color.PINK);
 
-        Button[] buttons = { b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, badd, bsub, bmul, bdiv, beq, bclr };
+        Button[] buttons = { b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, badd, bsub, bmul, bdiv, bdot, beq, bclr };
 
         for (Button button : buttons) {
-            // button.setPreferredSize(new Dimension(50, 50)); // Set ukuran tombol
             button.setBackground(Color.LIGHT_GRAY); // Warna background pink muda
             button.setForeground(Color.BLACK); // Warna teks hitam
         }
@@ -128,6 +136,10 @@ public class MainUI implements ActionListener {
         } else if (e.getSource() == beq) {
             String result = ComputationEngine.processCalculation(s1, currentText, operator);
             t1.setText(result);
+        } else if (e.getSource() == bdot) {
+            if (!currentText.contains(".")) { // Cegah lebih dari satu koma
+                t1.setText(currentText + ".");
+            }
         } else {
             if (e.getSource() == badd || e.getSource() == bsub || e.getSource() == bmul || e.getSource() == bdiv) {
                 s1 = currentText;

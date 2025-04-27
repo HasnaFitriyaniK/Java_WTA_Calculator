@@ -1,5 +1,10 @@
 public class ComputationEngine {
+
     public static String processCalculation(String input1, String input2, String operator) {
+
+        input1 = input1.replace(",", ".");
+        input2 = input2.replace(",", ".");
+
         // Validasi input pertama
         String error1 = Validator.validateNumber(input1);
         if (error1 != null) {
@@ -13,8 +18,8 @@ public class ComputationEngine {
         }
 
         // Karena sudah tervalidasi, kita bisa safely convert
-        int num1 = Integer.parseInt(input1);
-        int num2 = Integer.parseInt(input2);
+        double num1 = (double) Double.parseDouble(input1);
+        double num2 = (double) Double.parseDouble(input2);
 
         // Validasi operator
         if (!Validator.isValidOperator(operator)) {
