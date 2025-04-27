@@ -115,8 +115,8 @@ public class MainUI implements ActionListener {
         Button[] buttons = { b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, badd, bsub, bmul, bdiv, bdot, beq, bclr };
 
         for (Button button : buttons) {
-            button.setBackground(Color.LIGHT_GRAY); // Warna background pink muda
-            button.setForeground(Color.BLACK); // Warna teks hitam
+            button.setBackground(Color.LIGHT_GRAY);
+            button.setForeground(Color.BLACK);
         }
 
         f.addWindowListener(new WindowAdapter() {
@@ -137,7 +137,7 @@ public class MainUI implements ActionListener {
             String result = ComputationEngine.processCalculation(s1, currentText, operator);
             t1.setText(result);
         } else if (e.getSource() == bdot) {
-            if (!currentText.contains(".")) { // Cegah lebih dari satu koma
+            if (!currentText.contains(".")) {
                 t1.setText(currentText + ".");
             }
         } else {

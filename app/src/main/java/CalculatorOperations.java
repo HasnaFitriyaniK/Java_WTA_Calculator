@@ -12,6 +12,6 @@ public class CalculatorOperations {
     }
 
     public static double bagi(double a, double b) {
-        return a / b; // Pastikan pembagi tidak nol
+        return a / b;
     }
 }
