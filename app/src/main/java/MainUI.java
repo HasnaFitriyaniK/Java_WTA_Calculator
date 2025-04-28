@@ -1,3 +1,5 @@
+
+// dari mulai sini 
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,7 +18,9 @@ public class MainUI implements ActionListener {
     Button b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, badd, bsub, bclr, bmul, bdiv, bdot, beq;
     Panel p;
     TextField t1;
-    String s1, s2, operator;
+    String s1 = "";
+    String s2 = "";
+    String operator = "";
 
     public MainUI() {
         f = new Frame("Calculator");
@@ -131,17 +135,31 @@ public class MainUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String currentText = t1.getText();
 
-        if (e.getSource() == bclr) {
+        if (e.getSource() == bclr) { // Clear
             t1.setText("");
-        } else if (e.getSource() == beq) {
+            s1 = "";
+            operator = "";
+        } else if (e.getSource() == beq) { // Equal
             String result = ComputationEngine.processCalculation(s1, currentText, operator);
             t1.setText(result);
-        } else if (e.getSource() == bdot) {
+            s1 = "";
+            operator = "";
+        } else if (e.getSource() == bdot) { // Decimal point
             if (!currentText.contains(".")) {
                 t1.setText(currentText + ".");
             }
+        } else if (e.getSource() == bsub) { // Minus button
+            if (currentText.isEmpty()) {
+                t1.setText("-");
+            } else if (operator == null || operator.isEmpty()) {
+                s1 = currentText;
+                t1.setText("");
+                operator = "-";
+            } else {
+                t1.setText(currentText + "-");
+            }
         } else {
-            if (e.getSource() == badd || e.getSource() == bsub || e.getSource() == bmul || e.getSource() == bdiv) {
+            if (e.getSource() == badd || e.getSource() == bmul || e.getSource() == bdiv) {
                 s1 = currentText;
                 t1.setText("");
                 operator = e.getActionCommand();
