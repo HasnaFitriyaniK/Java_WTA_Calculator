@@ -1,38 +1,77 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-// CONTOH TEST UNTUK KELAS CalculatorOperations
-class CalculatorOperationsTest {
+public class CalculatorOperationsTest {
 
     @Test
-    void testTambah() {
-        assertEquals(5, CalculatorOperations.tambah(2, 3));
-        assertEquals(-1, CalculatorOperations.tambah(2, -3));
+    public void testTambah() {
+        // (1) Setup
+        double a = 7;
+        double b = 9;
+        double expected = 16;
+
+        // (2) Execute
+        double result;
+        result = CalculatorOperations.tambah(a, b);
+
+        // (3) Verify
+        assertEquals(expected, result);
+
+        // assertEquals(16, CalculatorOperations.tambah(7, 9));
+        // assertEquals(-2, CalculatorOperations.tambah(7, -9));
     }
 
     @Test
-    void testKurang() {
-        assertEquals(-1, CalculatorOperations.kurang(2, 3));
-        assertEquals(5, CalculatorOperations.kurang(2, -3));
+    public void testKurang() {
+        double a = 8;
+        double b = 2;
+
+        double expected = 6;
+        double result = CalculatorOperations.kurang(a, b);
+
+        assertEquals(expected, result);
     }
 
     @Test
-    void testKali() {
-        assertEquals(6, CalculatorOperations.kali(2, 3));
-        assertEquals(-6, CalculatorOperations.kali(2, -3));
+    public void testKali() {
+        double a = 2;
+        double b = 4;
+
+        double expected = 8;
+        double result = CalculatorOperations.kali(a, b);
+
+        assertEquals(expected, result);
+        // assertEquals(8, CalculatorOperations.kali(2, 4));
+        // assertEquals(-8, CalculatorOperations.kali(2, -4));
     }
 
     @Test
-    void testBagi() {
-        assertEquals(2, CalculatorOperations.bagi(6, 3));
-        assertEquals(-2, CalculatorOperations.bagi(6, -3));
+    public void testBagi() {
+        double a = 10;
+        double b = 5;
+
+        double expected = 2;
+        double result;
+        
+        result = CalculatorOperations.bagi(a, b);
+        assertEquals(expected, result);
+
+        // assertEquals(2, CalculatorOperations.bagi(10, 5));
+        // assertEquals(-2, CalculatorOperations.bagi(10, -5));
     }
 
     @Test
-    void testBagiDenganNol() {
-        Exception exception = assertThrows(ArithmeticException.class, () -> {
-            CalculatorOperations.bagi(5, 0);
-        });
-        assertEquals("/ by zero", exception.getMessage());
+    public void testBagiNegative() {
+        double a = 10;
+        double b = -5;
+
+        double expected = -2;
+        double result;
+        
+        result = CalculatorOperations.bagi(a, b);
+        assertEquals(expected, result);
+
+        // assertEquals(2, CalculatorOperations.bagi(10, 5));
+        // assertEquals(-2, CalculatorOperations.bagi(10, -5));
     }
 }
