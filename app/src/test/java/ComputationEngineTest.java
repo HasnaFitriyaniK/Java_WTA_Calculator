@@ -101,8 +101,8 @@ public class ComputationEngineTest {
 
     @Test
     public void testInputWithSpaces() {
-        String input1 = " 5 ";
-        String input2 = " 5 ";
+        String input1 = "5 5";
+        String input2 = "5";
         String operator = "+";
         String expected = "Error: Input harus angka";  
 
