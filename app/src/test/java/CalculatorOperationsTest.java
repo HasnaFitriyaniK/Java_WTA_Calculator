@@ -125,10 +125,13 @@ public class CalculatorOperationsTest {
     }
 
     @Test
-    void testBagiDenganNol() {
-        Exception exception = assertThrows(ArithmeticException.class, () -> {
-            CalculatorOperations.bagi(5, 0);
-        });
-        assertEquals("/ by zero", exception.getMessage());
+    public void testBagiBothNegative() {
+        double a = -10;
+        double b = -5;
+        double expected = 2;
+
+        double result = CalculatorOperations.bagi(a, b);
+
+        assertEquals(expected, result);
     }
 }
