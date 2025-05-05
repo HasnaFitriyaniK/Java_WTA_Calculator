@@ -126,9 +126,48 @@ public class ValidatorTest {
     }
 
     @Test
-    public void testIsValidOperator() {
+    public void testIsValidOperatorTambah() {
         // TC10
         // Path id: P1-4
+        // Menguji operator valid
+        
+        String operator = "+"; 
+
+        boolean result = Validator.isValidOperator(operator);
+        
+        assertTrue(result);
+    }
+
+    @Test
+    public void testIsValidOperatorKurang() {
+        // TC11
+        // Path id: P2-4
+        // Menguji operator valid
+        
+        String operator = "-"; 
+
+        boolean result = Validator.isValidOperator(operator);
+        
+        assertTrue(result);
+    }
+
+    @Test
+    public void testIsValidOperatorKali() {
+        // TC12
+        // Path id: P3-4
+        // Menguji operator valid
+        
+        String operator = "*"; 
+
+        boolean result = Validator.isValidOperator(operator);
+        
+        assertTrue(result);
+    }
+
+    @Test
+    public void testIsValidOperatorBagi() {
+        // TC13
+        // Path id: P4-4
         // Menguji operator valid
         
         String operator = "/"; 
@@ -139,10 +178,23 @@ public class ValidatorTest {
     }
 
     @Test
-    public void testIsNonZeroDivisor() {
-        // TC11
+    public void testIsNonZeroDivisorValid() {
+        // TC14
         // Path id: P1-5
         // Menguji angka pembagi bukan nol
+        
+        double divisor = 8; 
+
+        boolean result = Validator.isNonZeroDivisor(divisor);
+        
+        assertTrue(result);
+    }
+
+    @Test
+    public void testIsNonZeroDivisorInvalid() {
+        // TC15
+        // Path id: P2-5
+        // Menguji angka pembagi nol
         
         double divisor = 0.0; 
 

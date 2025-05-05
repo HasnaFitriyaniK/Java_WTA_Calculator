@@ -5,28 +5,65 @@ public class CalculatorOperationsTest {
 
     @Test
     public void testTambah() {
-        // (1) Setup
         double a = 7;
         double b = 9;
         double expected = 16;
 
-        // (2) Execute
-        double result;
-        result = CalculatorOperations.tambah(a, b);
+        double result = CalculatorOperations.tambah(a, b);
 
-        // (3) Verify
         assertEquals(expected, result);
+    }
 
-        // assertEquals(16, CalculatorOperations.tambah(7, 9));
-        // assertEquals(-2, CalculatorOperations.tambah(7, -9));
+    @Test
+    public void testTambahNegativeB() {
+        double a = 7;
+        double b = -9;
+        double expected = -2;
+
+        double result = CalculatorOperations.tambah(a, b);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testTambahBothNegative() {
+        double a = -7;
+        double b = -9;
+        double expected = -16;
+
+        double result = CalculatorOperations.tambah(a, b);
+
+        assertEquals(expected, result);
     }
 
     @Test
     public void testKurang() {
         double a = 8;
         double b = 2;
-
         double expected = 6;
+
+        double result = CalculatorOperations.kurang(a, b);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testKurangNegativeA() {
+        double a = -8;
+        double b = 2;
+        double expected = -10;
+
+        double result = CalculatorOperations.kurang(a, b);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testKurangBothNegative() {
+        double a = -8;
+        double b = -2;
+        double expected = -6;
+
         double result = CalculatorOperations.kurang(a, b);
 
         assertEquals(expected, result);
@@ -34,44 +71,67 @@ public class CalculatorOperationsTest {
 
     @Test
     public void testKali() {
-        double a = 2;
+        double a = 25;
         double b = 4;
+        double expected = 100;
 
-        double expected = 8;
         double result = CalculatorOperations.kali(a, b);
 
         assertEquals(expected, result);
-        // assertEquals(8, CalculatorOperations.kali(2, 4));
-        // assertEquals(-8, CalculatorOperations.kali(2, -4));
+    }
+
+    @Test
+    public void testKaliNegativeB() {
+        double a = 25;
+        double b = -4;
+        double expected = -100;
+
+        double result = CalculatorOperations.kali(a, b);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testKaliBothNegative() {
+        double a = -25;
+        double b = -4;
+        double expected = 100;
+
+        double result = CalculatorOperations.kali(a, b);
+
+        assertEquals(expected, result);
     }
 
     @Test
     public void testBagi() {
         double a = 10;
         double b = 5;
-
         double expected = 2;
-        double result;
-        
-        result = CalculatorOperations.bagi(a, b);
-        assertEquals(expected, result);
 
-        // assertEquals(2, CalculatorOperations.bagi(10, 5));
-        // assertEquals(-2, CalculatorOperations.bagi(10, -5));
+        double result = CalculatorOperations.bagi(a, b);
+
+        assertEquals(expected, result);
     }
 
     @Test
-    public void testBagiNegative() {
-        double a = 10;
-        double b = -5;
-
+    public void testBagiNegativeA() {
+        double a = -10;
+        double b = 5;
         double expected = -2;
-        double result;
-        
-        result = CalculatorOperations.bagi(a, b);
-        assertEquals(expected, result);
 
-        // assertEquals(2, CalculatorOperations.bagi(10, 5));
-        // assertEquals(-2, CalculatorOperations.bagi(10, -5));
+        double result = CalculatorOperations.bagi(a, b);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testBagiBothNegative() {
+        double a = -10;
+        double b = -5;
+        double expected = 2;
+
+        double result = CalculatorOperations.bagi(a, b);
+
+        assertEquals(expected, result);
     }
 }
