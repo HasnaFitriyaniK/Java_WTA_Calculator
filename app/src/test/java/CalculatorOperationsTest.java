@@ -1,32 +1,134 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-// CONTOH TEST UNTUK KELAS CalculatorOperations
-class CalculatorOperationsTest {
+public class CalculatorOperationsTest {
 
     @Test
-    void testTambah() {
-        assertEquals(5, CalculatorOperations.tambah(2, 3));
-        assertEquals(-1, CalculatorOperations.tambah(2, -3));
+    public void testTambah() {
+        double a = 7;
+        double b = 9;
+        double expected = 16;
+
+        double result = CalculatorOperations.tambah(a, b);
+
+        assertEquals(expected, result);
     }
 
     @Test
-    void testKurang() {
-        assertEquals(-1, CalculatorOperations.kurang(2, 3));
-        assertEquals(5, CalculatorOperations.kurang(2, -3));
+    public void testTambahNegativeB() {
+        double a = 7;
+        double b = -9;
+        double expected = -2;
+
+        double result = CalculatorOperations.tambah(a, b);
+
+        assertEquals(expected, result);
     }
 
     @Test
-    void testKali() {
-        assertEquals(6, CalculatorOperations.kali(2, 3));
-        assertEquals(-6, CalculatorOperations.kali(2, -3));
+    public void testTambahBothNegative() {
+        double a = -7;
+        double b = -9;
+        double expected = -16;
+
+        double result = CalculatorOperations.tambah(a, b);
+
+        assertEquals(expected, result);
     }
 
     @Test
-    void testBagi() {
-        assertEquals(2, CalculatorOperations.bagi(6, 3));
-        assertEquals(-2, CalculatorOperations.bagi(6, -3));
+    public void testKurang() {
+        double a = 8;
+        double b = 2;
+        double expected = 6;
+
+        double result = CalculatorOperations.kurang(a, b);
+
+        assertEquals(expected, result);
     }
 
-    
+    @Test
+    public void testKurangNegativeA() {
+        double a = -8;
+        double b = 2;
+        double expected = -10;
+
+        double result = CalculatorOperations.kurang(a, b);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testKurangBothNegative() {
+        double a = -8;
+        double b = -2;
+        double expected = -6;
+
+        double result = CalculatorOperations.kurang(a, b);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testKali() {
+        double a = 25;
+        double b = 4;
+        double expected = 100;
+
+        double result = CalculatorOperations.kali(a, b);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testKaliNegativeB() {
+        double a = 25;
+        double b = -4;
+        double expected = -100;
+
+        double result = CalculatorOperations.kali(a, b);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testKaliBothNegative() {
+        double a = -25;
+        double b = -4;
+        double expected = 100;
+
+        double result = CalculatorOperations.kali(a, b);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testBagi() {
+        double a = 10;
+        double b = 5;
+        double expected = 2;
+
+        double result = CalculatorOperations.bagi(a, b);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testBagiNegativeA() {
+        double a = -10;
+        double b = 5;
+        double expected = -2;
+
+        double result = CalculatorOperations.bagi(a, b);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testBagiDenganNol() {
+        Exception exception = assertThrows(ArithmeticException.class, () -> {
+            CalculatorOperations.bagi(5, 0);
+        });
+        assertEquals("/ by zero", exception.getMessage());
+    }
 }
