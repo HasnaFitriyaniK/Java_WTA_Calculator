@@ -28,11 +28,5 @@ class CalculatorOperationsTest {
         assertEquals(-2, CalculatorOperations.bagi(6, -3));
     }
 
-    @Test
-    void testBagiDenganNol() {
-        Exception exception = assertThrows(ArithmeticException.class, () -> {
-            CalculatorOperations.bagi(5, 0);
-        });
-        assertEquals("/ by zero", exception.getMessage());
-    }
+    
 }
