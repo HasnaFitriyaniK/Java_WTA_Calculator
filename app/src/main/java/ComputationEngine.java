@@ -17,7 +17,7 @@ public class ComputationEngine {
             return error2;
         }
 
-        // Karena sudah tervalidasi, kita bisa safely convert
+        // Karena sudah tervalidasi, bisa safely convert
         double num1 = (double) Double.parseDouble(input1);
         double num2 = (double) Double.parseDouble(input2);
 
@@ -26,23 +26,20 @@ public class ComputationEngine {
             return "Error: Operator tidak valid";
         }
 
-        // Validasi pembagi tidak nol jika operator pembagian
-        if (operator.equals("/") && !Validator.isNonZeroDivisor(num2)) {
-            return "Error: Pembagi tidak boleh nol";
-        }
-
         // Proses operasi
-        switch (operator) {
-            case "+":
-                return String.valueOf(CalculatorOperations.tambah(num1, num2));
-            case "-":
-                return String.valueOf(CalculatorOperations.kurang(num1, num2));
-            case "*":
-                return String.valueOf(CalculatorOperations.kali(num1, num2));
-            case "/":
-                return String.valueOf(CalculatorOperations.bagi(num1, num2));
-            default:
-                return "Error: Operator tidak valid";
+        if (operator.equals("+")) {
+            return String.valueOf(CalculatorOperations.tambah(num1, num2));
+        } else if (operator.equals("-")) {
+            return String.valueOf(CalculatorOperations.kurang(num1, num2));
+        } else if (operator.equals("*")) {
+            return String.valueOf(CalculatorOperations.kali(num1, num2));
+        } else {
+            // Validasi pembagi tidak nol jika operator pembagian
+            if (operator.equals("/") && !Validator.isNonZeroDivisor(num2)) {
+                return "Error: Pembagi tidak boleh nol";
+            }
+            return String.valueOf(CalculatorOperations.bagi(num1, num2));
         }
     }
 }
+
