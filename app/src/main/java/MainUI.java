@@ -1,5 +1,5 @@
 
-// dari mulai sini 
+// awal node 1
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -44,7 +44,7 @@ public class MainUI implements ActionListener {
         bsub = new Button("-");
         bmul = new Button("*");
         bdiv = new Button("/");
-        bdot = new Button(",");
+        bdot = new Button(".");
         beq = new Button("=");
         bclr = new Button("CLR");
 
@@ -134,37 +134,36 @@ public class MainUI implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String currentText = t1.getText();
-
-        if (e.getSource() == bclr) { // Clear
-            t1.setText("");
-            s1 = "";
-            operator = "";
-        } else if (e.getSource() == beq) { // Equal
-            String result = ComputationEngine.processCalculation(s1, currentText, operator);
-            t1.setText(result);
-            s1 = "";
-            operator = "";
-        } else if (e.getSource() == bdot) { // Decimal point
-            if (!currentText.contains(".")) {
-                t1.setText(currentText + ".");
+        if (e.getSource() == bclr) { // node 2
+            t1.setText(""); // node 3
+            s1 = ""; // node 3
+            operator = ""; // node 3
+        } else if (e.getSource() == beq) { // node 4
+            String result = ComputationEngine.processCalculation(s1, currentText, operator); // node 5
+            t1.setText(result); // node 5
+            s1 = ""; // node 5
+            operator = ""; // node 5
+        } else if (e.getSource() == bdot) { // node 6
+            if (!currentText.contains(".")) { // node 7
+                updateTextField("."); // node 8
             }
-        } else if (e.getSource() == bsub) { // Minus button
-            if (currentText.isEmpty()) {
-                t1.setText("-");
-            } else if (operator == null || operator.isEmpty()) {
-                s1 = currentText;
-                t1.setText("");
-                operator = "-";
+        } else if (e.getSource() == bsub) { // node 9
+            if (currentText.isEmpty()) { // node 10
+                t1.setText("-"); // node 11
+            } else if (operator == null || operator.isEmpty()) { // node 12
+                s1 = currentText; // node 13
+                t1.setText(""); // node 13
+                operator = "-"; // node 13
             } else {
-                t1.setText(currentText + "-");
+                updateTextField("-"); // node 14
             }
         } else {
-            if (e.getSource() == badd || e.getSource() == bmul || e.getSource() == bdiv) {
-                s1 = currentText;
-                t1.setText("");
+            if (e.getSource() == badd || e.getSource() == bmul || e.getSource() == bdiv) { // node 15
+                s1 = currentText; // node 16
+                t1.setText(""); // node 16
                 operator = e.getActionCommand();
             } else {
-                t1.setText(currentText + e.getActionCommand());
+                updateTextField(e.getActionCommand()); // node 17
             }
         }
     }
@@ -172,4 +171,19 @@ public class MainUI implements ActionListener {
     public static void main(String[] args) {
         new MainUI();
     }
+
+    public void setVisible(boolean b) {
+        f.setVisible(b);
+    }
+
+    public void dispose() {
+        f.dispose();
+    }
+
+    // Fungsi untuk mengupdate TextField dengan nilai baru
+    private void updateTextField(String value) {
+        String currentText = t1.getText();
+        t1.setText(currentText + value);
+    }
+
 }
